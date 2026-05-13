@@ -16,3 +16,13 @@ Aquí tienes las peticiones listas para probar el motor de reglas en **ms-compat
 - **Método:** `GET`
 - **URL:** `http://localhost:8083/api/compatibilidad/fuente-recomendada?watts=450`
 - **Body:** *(No requiere)*
+
+### 4. Consultar fuente de poder recomendada para un consumo excesivo (Debería dar Error 500)
+- **Método:** `GET`
+- **URL:** `http://localhost:8083/api/compatibilidad/fuente-recomendada?watts=2500`
+- **Body:** *(No requiere)*
+
+### 5. Consultar sin enviar el parámetro requerido (Debería dar Error 400)
+- **Método:** `GET`
+- **URL:** `http://localhost:8083/api/compatibilidad/validar-socket`
+- **Body:** *(No requiere)*

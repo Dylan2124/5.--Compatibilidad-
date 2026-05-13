@@ -20,4 +20,5 @@ INSERT INTO reglas_socket (tipo_componente, nombre_socket, generacion_soportada)
 INSERT INTO reglas_energia (consumo_watts_min, consumo_watts_max, fuente_recomendada_watts) VALUES
 (0, 300, 500),
 (301, 500, 750),
-(501, 1000, 1000);
+(501, 1000, 1000),
+(1001, 2000, 1600);
