@@ -2,27 +2,52 @@
 
 Aquí tienes las peticiones listas para probar el motor de reglas en **ms-compatibilidad** (Puerto 8083).
 
-### 1. Consultar si un CPU es compatible con una Placa Madre (Socket AM4)
+### 1. Validar compatibilidad de CPU con socket AM4 (Debería dar VERDADERO)
 - **Método:** `GET`
 - **URL:** `http://localhost:8083/api/compatibilidad/validar-socket?tipo=CPU&socket=AM4`
 - **Body:** *(No requiere)*
+- **Respuesta esperada:**
+```json
+{
+  "tipoComponente": "CPU",
+  "nombreSocket": "AM4",
+  "compatible": true
+}
+```
 
-### 2. Consultar si un CPU antiguo es compatible con una placa moderna (Debería dar falso)
+### 2. Validar compatibilidad de CPU con socket inexistente (Debería dar FALSO)
 - **Método:** `GET`
 - **URL:** `http://localhost:8083/api/compatibilidad/validar-socket?tipo=CPU&socket=LGA1151`
 - **Body:** *(No requiere)*
+- **Respuesta esperada:**
+```json
+{
+  "tipoComponente": "CPU",
+  "nombreSocket": "LGA1151",
+  "compatible": false
+}
+```
 
-### 3. Consultar fuente de poder mínima recomendada para un consumo de 450 Watts
+### 3. Consultar fuente de poder recomendada para un consumo de 450 Watts
 - **Método:** `GET`
 - **URL:** `http://localhost:8083/api/compatibilidad/fuente-recomendada?watts=450`
 - **Body:** *(No requiere)*
+- **Respuesta esperada:**
+```json
+{
+  "consumoEstimadoWatts": 450,
+  "fuenteRecomendadaWatts": 750
+}
+```
 
-### 4. Consultar fuente de poder recomendada para un consumo excesivo (Debería dar Error 500)
+### 4. Consultar fuente para un consumo fuera del rango (Debería dar Error 500)
 - **Método:** `GET`
 - **URL:** `http://localhost:8083/api/compatibilidad/fuente-recomendada?watts=2500`
 - **Body:** *(No requiere)*
-
-### 5. Consultar sin enviar el parámetro requerido (Debería dar Error 400)
-- **Método:** `GET`
-- **URL:** `http://localhost:8083/api/compatibilidad/validar-socket`
-- **Body:** *(No requiere)*
+- **Respuesta esperada:**
+```json
+{
+  "status": 500,
+  "error": "No existe regla de energía para un consumo tan alto o bajo: 2500"
+}
+```
