@@ -11,18 +11,16 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * ═══════════════════════════════════════════════════
- * CLASE: CompatibilidadController.java
- *
- * PATRÓN APLICADO (igual que el ejemplo de la profesora):
- *   1. No importa ninguna entidad directamente.
- *   2. Todos los métodos devuelven ResponseDTO.
- *   3. El controller solo orquesta: recibe la petición,
- *      llama al service y devuelve el resultado. Nada más.
- *   4. @Validated activa la validación de @RequestParam.
- *      Si falla → GlobalExceptionHandler → 400 Bad Request.
- * ═══════════════════════════════════════════════════
- */
+ * * ═══════════════════════════════════════════════════
+ * * CLASE: CompatibilidadController.java
+ * * PATRÓN APLICADO (igual que el ejemplo de la profesora):
+ * *   1. No importa ninguna entidad directamente.
+ * *   2. Todos los métodos devuelven ResponseDTO.
+ * *   3. El controller solo orquesta: recibe la petición,
+ * *      llama al service y devuelve el resultado. Nada más.
+ * *   4. @Validated activa la validación de @RequestParam.
+ * *      Si falla → GlobalExceptionHandler → 400 Bad Request.
+ * * ═══════════════════════════════════════════════════*/
 @RestController
 @RequestMapping("/api/compatibilidad")
 @RequiredArgsConstructor
