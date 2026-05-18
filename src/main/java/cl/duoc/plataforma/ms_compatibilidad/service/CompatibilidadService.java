@@ -132,8 +132,8 @@ public class CompatibilidadService {
         if (fuente != null && consumoTotal > 0) {
             try {
                 FuenteRecomendadaResponseDTO fuenteSugerida = calcularFuenteRecomendada(consumoTotal);
-                if (fuente.getConsumoWatts() < fuenteSugerida.getFuenteSugeridaWatts()) {
-                    errores.add("La fuente de poder (" + fuente.getConsumoWatts() + "W) es insuficiente. Se recomiendan al menos " + fuenteSugerida.getFuenteSugeridaWatts() + "W para este ensamblaje.");
+                if (fuente.getConsumoWatts() < fuenteSugerida.getFuenteRecomendadaWatts()) {
+                    errores.add("La fuente de poder (" + fuente.getConsumoWatts() + "W) es insuficiente. Se recomiendan al menos " + fuenteSugerida.getFuenteRecomendadaWatts() + "W para este ensamblaje.");
                 }
             } catch (Exception e) {
                 // Si no hay regla que cubra el consumo, lo marcamos como error
