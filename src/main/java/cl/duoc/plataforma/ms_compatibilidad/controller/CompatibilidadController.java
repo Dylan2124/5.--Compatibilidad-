@@ -1,5 +1,7 @@
 package cl.duoc.plataforma.ms_compatibilidad.controller;
 
+import cl.duoc.plataforma.ms_compatibilidad.dto.EvaluarCompatibilidadRequest;
+import cl.duoc.plataforma.ms_compatibilidad.dto.EvaluarCompatibilidadResponse;
 import cl.duoc.plataforma.ms_compatibilidad.dto.FuenteRecomendadaResponseDTO;
 import cl.duoc.plataforma.ms_compatibilidad.dto.ValidarSocketResponseDTO;
 import cl.duoc.plataforma.ms_compatibilidad.service.CompatibilidadService;
@@ -54,5 +56,13 @@ public class CompatibilidadController {
             @RequestParam @Min(value = 1, message = "El consumo en watts debe ser mayor a 0") Integer watts) {
 
         return ResponseEntity.ok(compatibilidadService.calcularFuenteRecomendada(watts));
+    }
+
+    // POST /api/compatibilidad/evaluar → 200 OK
+    // Recibe una lista de IDs de productos y evalúa si son compatibles entre sí
+    @PostMapping("/evaluar")
+    public ResponseEntity<EvaluarCompatibilidadResponse> evaluarCompatibilidad(@RequestBody EvaluarCompatibilidadRequest request) {
+        EvaluarCompatibilidadResponse response = compatibilidadService.evaluar(request);
+        return ResponseEntity.ok(response);
     }
 }
